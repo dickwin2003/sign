@@ -8,3 +8,8 @@ NODE_VERSION = "18"
 [[build.upload]]
 type = "directory"
 directory = "build/client"
+
+[site]
+bucket = "build/client"
+name = "sign-dfb"
+pages_build_output_dir = "build/client"
