@@ -24,7 +24,7 @@ export default defineConfig({
     tsconfigPaths(),
   ],
   server: {
-    port: 3000,
+    port: 80,
     host: '0.0.0.0',  // 允许所有 IP 访问
   },
   build: {
