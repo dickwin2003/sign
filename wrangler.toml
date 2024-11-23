@@ -1,19 +1,17 @@
 [build]
 command = "npm run build"
-output_dir = "./build/client"
+pages_build_output_dir = "./build/client"
 
 [site]
 bucket = "./build/client"
 name = "sign"
+main = "./build/client/index.js"
 compatibility_date = "2023-11-21"
 compatibility_flags = ["nodejs_compat"]
 
 [env.production]
-output_dir = "./build/client"
+pages_build_output_dir = "./build/client"
 name = "sign-prod"
 
 [env.staging]
 name = "sign-staging"
-
-[build.environment]
-NODE_VERSION = "18"

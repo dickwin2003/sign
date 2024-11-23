@@ -14,50 +14,54 @@ export default defineConfig({
         v3_singleFetch: true,
         v3_lazyRouteDiscovery: true,
       },
-      serverModuleFormat: "esm",
+      serverModuleFormat: "cjs",
       serverPlatform: "node",
-      ssr: true,
-      ignoredRouteFiles: ["**/.*"],
     }),
     tsconfigPaths(),
     nodePolyfills({
-      include: ['crypto', 'stream', 'buffer', 'events', 'assert', 'util', 'path', 'os', 'fs', 'fs/promises'],
       globals: {
         Buffer: true,
         global: true,
         process: true,
       },
+      include: [
+        "buffer",
+        "crypto",
+        "events",
+        "path",
+        "process",
+        "stream",
+        "string_decoder",
+        "url",
+        "util",
+        "zlib"
+      ],
       protocolImports: true,
     }),
   ],
-  server: {
-    port: 3000,
-  },
-  ssr: {
-    target: 'node',
-    format: 'esm',
-  },
   build: {
-    target: 'esnext',
+    target: "es2020",
     rollupOptions: {
-      external: ['node:crypto', 'node:stream', 'node:buffer', 'node:events', 'node:assert', 'node:util', 'node:path', 'node:os', 'node:fs', 'node:fs/promises'],
-    },
-    commonjsOptions: {
-      transformMixedEsModules: true,
+      external: [
+        "crypto",
+        "stream",
+        "events",
+        "path",
+        "process",
+        "url",
+        "util",
+        "zlib",
+      ],
     },
   },
   optimizeDeps: {
-    esbuildOptions: {
-      define: {
-        global: "globalThis",
-      },
-    },
+    exclude: ['chrome-extension'],
   },
-  resolve: {
-    alias: {
-      "~": resolve(__dirname, "./app"),
-      stream: "vite-compatible-readable-stream",
-      crypto: "crypto-browserify",
+  server: {
+    port: 3000,
+    fs: {
+      strict: false,
+      allow: ['..']
     },
   },
 });

@@ -1,6 +1,8 @@
 import type { MetaFunction } from "@remix-run/node";
 import { Form } from "@remix-run/react";
+import { useEffect, useState } from "react";
 import Layout from "~/components/Layout";
+import { connectToExtension, setupMessageListener } from "~/utils/messaging";
 
 export const meta: MetaFunction = () => {
   return [
@@ -10,6 +12,62 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
+  const [extensionConnected, setExtensionConnected] = useState(false);
+
+  useEffect(() => {
+    let mounted = true;
+    let port: chrome.runtime.Port | null = null;
+
+    const cleanup = setupMessageListener((event) => {
+      if (mounted && event.data) {
+        console.log("Received message:", event.data);
+      }
+    });
+
+    const initializeExtension = async () => {
+      try {
+        const connection = await connectToExtension();
+        
+        if (!mounted) return;
+
+        if (connection.connected && connection.port) {
+          port = connection.port;
+          setExtensionConnected(true);
+
+          port.onMessage.addListener((msg) => {
+            if (mounted) {
+              console.log("Received from extension:", msg);
+            }
+          });
+
+          port.onDisconnect.addListener(() => {
+            if (mounted) {
+              setExtensionConnected(false);
+            }
+          });
+        }
+      } catch (error) {
+        if (mounted) {
+          console.warn("Extension initialization failed:", error);
+        }
+      }
+    };
+
+    initializeExtension();
+
+    return () => {
+      mounted = false;
+      if (port) {
+        try {
+          port.disconnect();
+        } catch (error) {
+          console.warn("Error disconnecting port:", error);
+        }
+      }
+      cleanup();
+    };
+  }, []);
+
   return (
     <Layout>
       <div className="min-h-[calc(100vh-6rem)] flex flex-col justify-between bg-amber-50/30 py-3">
@@ -101,15 +159,15 @@ export default function Index() {
               </p>
               <p className="flex items-center text-xs text-yellow-900/90">
                 <i className="fas fa-circle text-[3px] mr-2 text-yellow-800"></i>
-                需怀虔诚、恭敬之心
+                诚心祈愿，静候仙示
               </p>
               <p className="flex items-center text-xs text-yellow-900/90">
                 <i className="fas fa-circle text-[3px] mr-2 text-yellow-800"></i>
-                所求事项须明确具体
+                签文仅供参考，切勿过分依赖
               </p>
               <p className="flex items-center text-xs text-yellow-900/90">
                 <i className="fas fa-circle text-[3px] mr-2 text-yellow-800"></i>
-                签文仅供参考，重在明理
+                遵医嘱，守法规，有疑问及时咨询专业人士
               </p>
             </div>
           </section>

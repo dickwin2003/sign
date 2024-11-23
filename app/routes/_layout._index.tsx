@@ -17,7 +17,7 @@ export default function Index() {
           <i className="fas fa-dharmachakra text-yellow-800/90 text-3xl"></i>
         </div>
         <h1 className="text-xl font-bold mb-1 text-yellow-900">黄大仙灵签殿堂</h1>
-        <p className="text-yellow-800/90 text-sm">承蒙黄大仙师恩准，传承古法，指引迷津</p>
+        <p className="text-yellow-900/80 text-xs tracking-wide">承蒙黄大仙师恩准 • 传承古法 • 指引迷津</p>
       </div>
 
       {/* 求签表单 */}
@@ -41,49 +41,28 @@ export default function Index() {
         </div>
       </div>
 
-      {/* 求签步骤 */}
-      <div className="px-4 py-3">
-        <div className="bg-gradient-to-b from-yellow-50 to-amber-100/70 rounded-lg border-2 border-yellow-800/30 px-4 py-3">
-          <h2 className="text-base font-medium text-yellow-900 mb-3 text-center">求签流程</h2>
-          <div className="space-y-2">
-            <div className="flex items-start space-x-3">
-              <span className="bg-yellow-100 text-yellow-900 w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">壹</span>
-              <p className="text-sm text-yellow-900/90 flex-1">点击"开始求签"按钮，虔诚祈愿</p>
-            </div>
-            <div className="flex items-start space-x-3">
-              <span className="bg-yellow-100 text-yellow-900 w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">贰</span>
-              <p className="text-sm text-yellow-900/90 flex-1">可选择投掷圣杯，获得神明指示</p>
-            </div>
-            <div className="flex items-start space-x-3">
-              <span className="bg-yellow-100 text-yellow-900 w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">叁</span>
-              <p className="text-sm text-yellow-900/90 flex-1">解签后获得黄大仙师指引</p>
-            </div>
-          </div>
+      {/* 求签步骤和须知 */}
+      <div className="grid grid-cols-1 gap-3 px-2">
+        {/* 求签步骤 */}
+        <div className="bg-gradient-to-b from-yellow-50 to-amber-100/70 rounded-lg border-2 border-yellow-800/30 p-4">
+          <h3 className="text-base font-medium text-yellow-900 mb-3">求签步骤</h3>
+          <ol className="list-decimal list-inside text-sm text-yellow-800/90 space-y-2">
+            <li>点击"开始求签"按钮</li>
+            <li>诚心默念您的姓名、出生年月和所求之事</li>
+            <li>虔诚祈祷，等待灵签显示</li>
+            <li>仔细阅读签文解释，参悟其中玄机</li>
+          </ol>
         </div>
-      </div>
 
-      {/* 求签须知 */}
-      <div className="px-4 py-3">
-        <div className="bg-gradient-to-b from-yellow-50 to-amber-100/70 rounded-lg border-2 border-yellow-800/30 px-4 py-3">
-          <h2 className="text-base font-medium text-yellow-900 mb-3 text-center">求签须知</h2>
-          <div className="space-y-2">
-            <div className="flex items-start space-x-3">
-              <i className="fas fa-circle text-[6px] text-yellow-800 mt-1.5"></i>
-              <p className="text-sm text-yellow-900/90 flex-1">求签前需虔诚祈祷，心无杂念</p>
-            </div>
-            <div className="flex items-start space-x-3">
-              <i className="fas fa-circle text-[6px] text-yellow-800 mt-1.5"></i>
-              <p className="text-sm text-yellow-900/90 flex-1">每次求签需间隔一天以上</p>
-            </div>
-            <div className="flex items-start space-x-3">
-              <i className="fas fa-circle text-[6px] text-yellow-800 mt-1.5"></i>
-              <p className="text-sm text-yellow-900/90 flex-1">解签内容仅供参考，切勿过分依赖</p>
-            </div>
-            <div className="flex items-start space-x-3">
-              <i className="fas fa-circle text-[6px] text-yellow-800 mt-1.5"></i>
-              <p className="text-sm text-yellow-900/90 flex-1">遵医嘱，守法规，有疑问及时咨询专业人士</p>
-            </div>
-          </div>
+        {/* 求签须知 */}
+        <div className="bg-gradient-to-b from-yellow-50 to-amber-100/70 rounded-lg border-2 border-yellow-800/30 p-4">
+          <h3 className="text-base font-medium text-yellow-900 mb-3">求签须知</h3>
+          <ul className="list-disc list-inside text-sm text-yellow-800/90 space-y-2">
+            <li>保持虔诚恭敬的心态</li>
+            <li>每日限求一签</li>
+            <li>切勿重复求问同一事项</li>
+            <li>签文仅供参考，关键时刻还需谨慎判断</li>
+          </ul>
         </div>
       </div>
     </div>

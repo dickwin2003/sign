@@ -9,5 +9,5 @@ if (process.env.NODE_ENV === "development") {
 export const onRequest = createPagesFunctionHandler({
   build,
   mode: process.env.NODE_ENV,
-  getLoadContext: (context) => context.env,
+  getLoadContext: (context) => ({ env: context.env }),
 });
