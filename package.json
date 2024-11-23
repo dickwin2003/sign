@@ -10,7 +10,7 @@
     "start": "remix-serve ./build/index.js",
     "typecheck": "tsc",
     "pages:dev": "wrangler pages dev ./build/client",
-    "pages:deploy": "npm run build && wrangler pages deploy ./build/client"
+    "pages:deploy": "npm run build && wrangler pages deploy ./build/client --project-name sign"
   },
   "dependencies": {
     "@remix-run/cloudflare": "^2.15.0",
@@ -43,6 +43,6 @@
     "wrangler": "^3.34.2"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=20.0.0"
   }
 }
