@@ -2,38 +2,47 @@
   "name": "sign",
   "private": true,
   "sideEffects": false,
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
-    "build": "remix build",
-    "dev": "remix dev",
+    "build": "remix vite:build",
+    "dev": "remix vite:dev",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
-    "start": "remix-serve ./build/index.js --port 3001",
-    "typecheck": "tsc"
+    "start": "remix-serve ./build/server/index.js",
+    "typecheck": "tsc",
+    "pages:dev": "wrangler pages dev ./public --compatibility-date=2024-03-15",
+    "pages:deploy": "npm run build && wrangler pages deploy ./public"
   },
   "dependencies": {
-    "@remix-run/node": "1.19.3",
-    "@remix-run/react": "1.19.3",
-    "@remix-run/serve": "1.19.3",
-    "isbot": "^3.6.8",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "@remix-run/cloudflare": "^2.15.0",
+    "@remix-run/node": "^2.15.0",
+    "@remix-run/react": "^2.15.0",
+    "@remix-run/serve": "^2.15.0",
+    "isbot": "^4.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@remix-run/dev": "1.19.3",
-    "@types/react": "^17.0.65",
-    "@types/react-dom": "^17.0.20",
-    "@typescript-eslint/eslint-plugin": "^6.13.0",
-    "@typescript-eslint/parser": "^6.13.0",
-    "autoprefixer": "^10.4.16",
-    "eslint": "^8.54.0",
+    "@cloudflare/workers-types": "^4.20240314.0",
+    "@remix-run/dev": "^2.15.0",
+    "@types/react": "^18.2.20",
+    "@types/react-dom": "^18.2.7",
+    "@typescript-eslint/eslint-plugin": "^6.7.4",
+    "@typescript-eslint/parser": "^6.7.4",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^8.38.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "^7.33.2",
-    "postcss": "^8.4.32",
-    "typescript": "^5.2.2",
-    "vite": "^4.5.1",
-    "vite-plugin-node-polyfills": "^0.19.0",
-    "vite-tsconfig-paths": "^4.2.1"
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.15",
+    "typescript": "^5.1.6",
+    "vite": "^5.1.0",
+    "vite-tsconfig-paths": "^4.2.1",
+    "wrangler": "^3.34.2"
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=18.0.0"
   }
 }

@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["css-side-effects-plugin-ns:app\\tailwind.css"],
-  "sourcesContent": ["@tailwind base;\r\n@tailwind components;\r\n@tailwind utilities;\r\n\r\nhtml,\r\nbody {\r\n  @apply bg-white dark:bg-gray-950;\r\n\r\n  @media (prefers-color-scheme: dark) {\r\n    color-scheme: dark;\r\n  }\r\n}\r\n"],
-  "mappings": ";AAAA;AACA;AACA;AAEA;AAAA;AAEE;AAEA;AACE;AAAA;AAAA;",
-  "names": []
-}
