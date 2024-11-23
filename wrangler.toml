@@ -9,6 +9,9 @@ pages_build_output_dir = "build/client"
 [site]
 bucket = "./build/client"
 
-[[build.worker_dev]]
-name = "sign"
-main = "./build/client/_worker.js"
+[build.upload]
+format = "service-worker"
+
+[[functions]]
+pattern = "/*"
+worker = "functions/_worker.js"
