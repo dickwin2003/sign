@@ -5,3 +5,10 @@ compatibility_flags = ["nodejs_compat"]
 [build]
 command = "npm run build"
 pages_build_output_dir = "build/client"
+
+[site]
+bucket = "./build/client"
+
+[[build.worker_dev]]
+name = "sign"
+main = "./build/client/_worker.js"
