@@ -1,17 +1,15 @@
 [build]
 command = "npm run build"
-compatibility_date = "2023-11-21"
-compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = "./build/client"
-
-[build.upload]
-format = "service-worker"
 
 [site]
 bucket = "./build/client"
 name = "sign"
+compatibility_date = "2023-11-21"
+compatibility_flags = ["nodejs_compat"]
 
 [env.production]
+pages_build_output_dir = "./build/client"
 name = "sign-prod"
 
 [env.staging]
