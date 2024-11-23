@@ -7,10 +7,10 @@
     "build": "remix vite:build",
     "dev": "remix vite:dev",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
-    "start": "remix-serve ./build/server/index.js",
+    "start": "remix-serve ./build/index.js",
     "typecheck": "tsc",
-    "pages:dev": "wrangler pages dev ./public --compatibility-date=2024-03-15",
-    "pages:deploy": "npm run build && wrangler pages deploy ./public"
+    "pages:dev": "wrangler pages dev ./build/client",
+    "pages:deploy": "npm run build && wrangler pages deploy ./build/client"
   },
   "dependencies": {
     "@remix-run/cloudflare": "^2.15.0",
