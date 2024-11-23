@@ -10,6 +10,8 @@ type = "directory"
 directory = "build/client"
 
 [site]
-bucket = "build/client"
-name = "sign-dfb"
+bucket = "./build/client"
+name = "sign"
+compatibility_date = "2023-06-21"
+compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = "build/client"
