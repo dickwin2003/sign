@@ -4,3 +4,7 @@ publish = "build/client"
 
 [build.environment]
 NODE_VERSION = "18"
+
+[[build.upload]]
+type = "directory"
+directory = "build/client"
