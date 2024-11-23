@@ -16,21 +16,31 @@ export default defineConfig({
       },
       serverModuleFormat: "esm",
       serverPlatform: "node",
+      ssr: true,
+      ignoredRouteFiles: ["**/.*"],
     }),
     tsconfigPaths(),
     nodePolyfills({
+      include: ['crypto', 'stream', 'buffer', 'events', 'assert', 'util', 'path', 'os', 'fs', 'fs/promises'],
       globals: {
         Buffer: true,
         global: true,
         process: true,
       },
-      include: ["stream", "crypto"],
       protocolImports: true,
     }),
   ],
+  server: {
+    port: 3000,
+  },
+  ssr: {
+    target: 'node',
+    format: 'esm',
+  },
   build: {
+    target: 'esnext',
     rollupOptions: {
-      external: ["stream", "crypto"],
+      external: ['node:crypto', 'node:stream', 'node:buffer', 'node:events', 'node:assert', 'node:util', 'node:path', 'node:os', 'node:fs', 'node:fs/promises'],
     },
     commonjsOptions: {
       transformMixedEsModules: true,
