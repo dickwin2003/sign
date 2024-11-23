@@ -12,7 +12,7 @@ export default defineConfig({
   plugins: [
     remix({
       serverModuleFormat: "esm",
-      serverPlatform: "node",
+      serverPlatform: "cloudflare",
       future: {
         v3_fetcherPersist: true,
         v3_relativeSplatPath: true,
@@ -24,10 +24,15 @@ export default defineConfig({
     tsconfigPaths(),
   ],
   server: {
-    port: 80,
+    port: 3000,
     host: '0.0.0.0',  // 允许所有 IP 访问
   },
   build: {
     target: 'esnext',
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+    },
   },
 });
