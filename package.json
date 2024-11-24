@@ -9,8 +9,8 @@
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "start": "remix-serve ./build/index.js",
     "typecheck": "tsc",
-    "pages:dev": "wrangler pages dev ./build",
-    "pages:deploy": "npm run build && wrangler pages deploy ./build --project-name sign"
+    "pages:dev": "wrangler pages dev ./build/client --binding DB=your-db-name",
+    "pages:deploy": "npm run build && wrangler pages deploy ./build/client --project-name sign"
   },
   "dependencies": {
     "@remix-run/cloudflare": "^2.15.0",
@@ -40,9 +40,9 @@
     "typescript": "^5.1.6",
     "vite": "^5.1.0",
     "vite-tsconfig-paths": "^4.2.1",
-    "wrangler": "^3.34.2"
+    "wrangler": "^3.90.0"
   },
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=18.0.0"
   }
 }
