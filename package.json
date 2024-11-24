@@ -6,34 +6,30 @@
     "build": "npm run build:css && remix build",
     "build:css": "tailwindcss -m -i ./app/tailwind.css -o ./app/tailwind.css",
     "dev": "remix dev -c \"npm run start\"",
-    "start": "wrangler pages dev --d1=DB --compatibility-date=2023-06-21 ./public",
+    "start": "wrangler pages dev --d1=DB --compatibility-date=2023-06-21 --ip 0.0.0.0 ./public",
     "typecheck": "tsc",
     "pages:deploy": "npm run build && wrangler pages deploy ./public"
   },
   "dependencies": {
     "@remix-run/cloudflare": "^2.5.1",
     "@remix-run/cloudflare-pages": "^2.5.1",
-    "@remix-run/css-bundle": "^2.5.1",
     "@remix-run/react": "^2.5.1",
     "isbot": "^3.6.8",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "remix": "^2.5.1",
-    "tailwindcss": "^3.3.2"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240208.0",
     "@remix-run/dev": "^2.5.1",
-    "@remix-run/eslint-config": "^2.5.1",
-    "@types/react": "^18.0.35",
-    "@types/react-dom": "^18.0.11",
-    "autoprefixer": "^10.4.20",
-    "eslint": "^8.38.0",
-    "postcss": "^8.4.49",
-    "typescript": "^5.0.4",
-    "wrangler": "^3.1.2"
+    "@types/react": "^18.2.57",
+    "@types/react-dom": "^18.2.19",
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.3.3",
+    "wrangler": "^3.28.1"
   },
   "engines": {
-    "node": ">=16.13.0"
+    "node": ">=18.0.0"
   }
 }

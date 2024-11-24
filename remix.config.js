@@ -5,7 +5,12 @@ export default {
   server: "./server.ts",
   serverBuildPath: "functions/[[path]].js",
   serverConditions: ["worker"],
-  serverDependenciesToBundle: "all",
+  serverDependenciesToBundle: [
+    "cookie",
+    "cookie-signature",
+    "stream-slice",
+    /^@remix-run\/.*/,
+  ],
   serverMainFields: ["browser", "module", "main"],
   serverMinify: true,
   serverModuleFormat: "esm",

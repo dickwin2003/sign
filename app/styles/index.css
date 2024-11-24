@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-100 font-sans leading-normal tracking-normal;
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply text-gray-800 font-semibold hover:text-blue-600 mr-4;
+  }
+  
+  .social-link {
+    @apply text-gray-400 hover:text-blue-600;
+  }
+}
+
+/* Custom styles */
+.prose img {
+  @apply rounded-lg shadow-lg;
+}
+
+.prose a {
+  @apply text-blue-600 hover:text-blue-800;
+}
+
+/* Add custom font */
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
