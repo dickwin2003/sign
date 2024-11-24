@@ -1,13 +1,9 @@
-name = "sign"
-compatibility_date = "2023-11-21"
-compatibility_flags = ["nodejs_compat"]
-
-[build]
-command = "npm run build"
+[[d1_databases]]
+binding = "DB"
+database_name = "remix-and-d1"
+database_id = "bf7fef50-9482-4c6f-88d5-8ce0cea5182a"
+preview_database_id = "bf7fef50-9482-4c6f-88d5-8ce0cea5182a"
 
 [site]
-bucket = "./build/client"
-
-[[functions]]
-pattern = "/*"
-directory = "./functions"
+bucket = "./public"
+pages_build_output_dir = "./public"
