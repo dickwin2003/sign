@@ -19,9 +19,9 @@ export default defineConfig({
         v3_throwAbortReason: true,
         v3_singleFetch: true,
         v3_lazyRouteDiscovery: true,
-      },
+      }
     }),
-    tsconfigPaths(),
+    tsconfigPaths()
   ],
   server: {
     port: 3000,
@@ -33,6 +33,7 @@ export default defineConfig({
       output: {
         manualChunks: undefined,
       },
-    },
+      external: ["node:crypto"]
+    }
   },
 });

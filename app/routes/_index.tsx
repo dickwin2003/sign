@@ -1,6 +1,5 @@
-import type { MetaFunction } from "@remix-run/node";
-import { json } from "@remix-run/node"; // エラーが出る
-import { json } from "@remix-run/cloudflare"; // エラーが出ない
+import type { MetaFunction } from "@remix-run/cloudflare";
+import { json } from "@remix-run/cloudflare";
 
 export const meta: MetaFunction = () => {
   return [
