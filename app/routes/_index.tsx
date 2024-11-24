@@ -56,28 +56,28 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-6 sm:py-12">
         {/* Hero Section */}
-        <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-blue-900 mb-4">
+        <div className="text-center mb-8 sm:mb-16">
+          <h1 className="text-3xl sm:text-5xl font-bold text-blue-900 mb-3 sm:mb-4">
             Remix Demo
           </h1>
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8">
             探索 Remix 的强大特性
           </p>
-          <div className="flex justify-center gap-4">
+          <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
             <button
               onClick={() => setShowDemo(!showDemo)}
-              className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+              className="w-full sm:w-auto px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 active:bg-blue-800 transition text-lg touch-manipulation"
             >
               {showDemo ? "隐藏" : "显示"}客户端状态演示
             </button>
             {showDemo && (
-              <div className="fixed top-4 right-4 bg-white p-4 rounded-lg shadow-lg">
-                <p>这是一个客户端状态管理的演示</p>
+              <div className="fixed bottom-4 sm:top-4 left-4 right-4 sm:left-auto sm:right-4 bg-white p-4 rounded-lg shadow-lg max-w-sm mx-auto sm:mx-0">
+                <p className="text-base sm:text-lg">这是一个客户端状态管理的演示</p>
                 <button
                   onClick={() => setShowDemo(false)}
-                  className="mt-2 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                  className="mt-3 w-full px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 active:bg-red-700 transition touch-manipulation"
                 >
                   关闭
                 </button>
@@ -87,27 +87,27 @@ export default function Index() {
         </div>
 
         {/* Features Grid */}
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 mb-8 sm:mb-16">
           {/* Form Demo */}
-          <div className="bg-white p-6 rounded-xl shadow-lg">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">表单处理演示</h2>
+          <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4">表单处理演示</h2>
             <Form method="post" ref={formRef} className="space-y-4">
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="email" className="block text-base sm:text-sm font-medium text-gray-700 mb-1">
                   邮箱订阅
                 </label>
                 <input
                   type="email"
                   name="email"
-                  id="email"
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                  placeholder="your@email.com"
+                  className="w-full px-4 py-3 sm:py-2 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  placeholder="请输入您的邮箱"
+                  required
                 />
               </div>
               <button
                 type="submit"
                 disabled={navigation.state === "submitting"}
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                className="w-full sm:w-auto px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 active:bg-blue-800 transition text-lg touch-manipulation"
               >
                 {navigation.state === "submitting" ? "提交中..." : "提交"}
               </button>
@@ -121,8 +121,8 @@ export default function Index() {
           </div>
 
           {/* Fetcher Demo */}
-          <div className="bg-white p-6 rounded-xl shadow-lg">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">Fetcher 演示</h2>
+          <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4">Fetcher 演示</h2>
             <p className="text-gray-600 mb-4">
               使用 useFetcher 进行后台数据获取，不影响页面导航状态
             </p>
@@ -133,7 +133,7 @@ export default function Index() {
                   { method: "post" }
                 );
               }}
-              className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+              className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 active:bg-green-800 transition touch-manipulation"
             >
               {fetcher.state === "submitting" 
                 ? "处理中..." 
@@ -148,18 +148,18 @@ export default function Index() {
         </div>
 
         {/* User List Section */}
-        <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">
+        <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 mb-8 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">
             用户列表 ({users.length})
           </h2>
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">邮箱</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">创建时间</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">状态</th>
+                  <th className="px-6 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                  <th className="px-6 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">邮箱</th>
+                  <th className="px-6 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">创建时间</th>
+                  <th className="px-6 py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">状态</th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
@@ -171,7 +171,7 @@ export default function Index() {
                       {user.created_at ? new Date(user.created_at * 1000).toLocaleString() : 'N/A'}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm">
-                      <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                      <span className={`px-2 inline-flex text-xs sm:text-sm leading-5 font-semibold rounded-full ${
                         user.deleted ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'
                       }`}>
                         {user.deleted ? '已删除' : '正常'}
@@ -182,15 +182,15 @@ export default function Index() {
               </tbody>
             </table>
           </div>
-          <p className="text-xs text-gray-500 mt-4">
+          <p className="text-xs sm:text-sm text-gray-500 mt-4">
             查询耗时: {meta.duration.toPrecision(2)} ms
           </p>
         </div>
 
         {/* Documentation Links */}
-        <div className="bg-gray-50 rounded-xl p-6">
-          <h2 className="text-xl font-bold text-gray-800 mb-4">相关文档</h2>
-          <div className="grid md:grid-cols-3 gap-4">
+        <div className="bg-gray-50 rounded-xl p-4 sm:p-6">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4">相关文档</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <Link
               to="https://remix.run/docs"
               className="block p-4 bg-white rounded-lg shadow hover:shadow-md transition"
