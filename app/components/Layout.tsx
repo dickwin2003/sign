@@ -108,25 +108,31 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <div className="text-center">
             <div className="flex justify-center space-x-6 mb-3">
               <a 
-                href="#" 
+                href="https://x.com/dickwin2003" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-yellow-200/80 hover:text-yellow-100 transition-colors duration-300"
-                aria-label="微信"
+                aria-label="Twitter"
               >
-                <i className="fab fa-weixin text-lg"></i>
+                <i className="fab fa-twitter text-lg"></i>
               </a>
               <a 
-                href="#" 
+                href="https://www.youtube.com/@川香回锅肉" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-yellow-200/80 hover:text-yellow-100 transition-colors duration-300"
-                aria-label="微博"
+                aria-label="YouTube"
               >
-                <i className="fab fa-weibo text-lg"></i>
+                <i className="fab fa-youtube text-lg"></i>
               </a>
               <a 
-                href="#" 
+                href="https://www.facebook.com/dick.win.7" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-yellow-200/80 hover:text-yellow-100 transition-colors duration-300"
-                aria-label="QQ"
+                aria-label="Facebook"
               >
-                <i className="fab fa-qq text-lg"></i>
+                <i className="fab fa-facebook text-lg"></i>
               </a>
             </div>
             <div className="text-yellow-200/80 space-y-1">

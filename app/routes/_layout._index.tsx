@@ -1,4 +1,4 @@
-import type { MetaFunction } from "@remix-run/node";
+import type { MetaFunction } from "@remix-run/cloudflare";
 import { Form } from "@remix-run/react";
 
 export const meta: MetaFunction = () => {
