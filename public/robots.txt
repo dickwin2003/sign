@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Sitemap: https://pooclouds.uk/sitemap.xml
+
+# 禁止爬虫访问某些特定路径
+Disallow: /build/
+Disallow: /api/
+Disallow: /admin/

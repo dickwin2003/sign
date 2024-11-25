@@ -1,4 +1,13 @@
 import Layout from "~/components/Layout";
+import type { MetaFunction } from "@remix-run/cloudflare";
+import { createMetaTags } from "~/utils/meta";
+
+export const meta: MetaFunction = () => createMetaTags(
+  "关于本殿",
+  "黄大仙灵签殿堂是一个传承古法、指引迷津的神圣空间。在这里，我们秉承黄大仙师的慈悲精神，为众生提供求签问事的服务。",
+  "黄大仙庙,灵签殿堂,求签解签,神明指引",
+  "/about"
+);
 
 export default function About() {
   return (

@@ -2,8 +2,17 @@ import Layout from "~/components/Layout";
 import { json } from "@remix-run/cloudflare";
 import { useLoaderData } from "@remix-run/react";
 import { getAllSigns } from "~/utils/signUtils";
+import type { MetaFunction } from "@remix-run/cloudflare";
+import { createMetaTags } from "~/utils/meta";
 import hdxData from "~/data/hdx.json";
 import type { SignRecord } from "~/utils/signUtils";
+
+export const meta: MetaFunction = () => createMetaTags(
+  "灵签典籍",
+  "黄大仙灵签典籍收录百年传承签文，详细解释每支签的含义和指引。帮助您更好地理解神明的指示，获得人生启发。",
+  "灵签典籍,签文解释,黄大仙签文,求签指南,运势分析",
+  "/blog"
+);
 
 export async function loader() {
   const signs = getAllSigns();

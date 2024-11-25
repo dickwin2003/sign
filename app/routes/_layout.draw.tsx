@@ -1,5 +1,13 @@
-import { json, redirect, type LoaderFunctionArgs, type ActionFunctionArgs } from "@remix-run/cloudflare";
+import { json, redirect, type LoaderFunctionArgs, type ActionFunctionArgs, type MetaFunction } from "@remix-run/cloudflare";
 import { Form, useLoaderData } from "@remix-run/react";
+import { createMetaTags } from "~/utils/meta";
+
+export const meta: MetaFunction = () => createMetaTags(
+  "求签问事",
+  "黄大仙灵签在线求签，虔诚问事，获取神明指引。提供圣杯确认和详细解签服务，助您明晰前路，趋吉避凶。",
+  "求签问事,圣杯确认,解签服务,运势预测,神明指引",
+  "/fortune"
+);
 
 // 生成随机签号
 export async function loader({ request }: LoaderFunctionArgs) {
