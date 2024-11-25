@@ -44,19 +44,29 @@ export default function Index() {
       {/* 求签步骤 */}
       <div className="px-4 py-3">
         <div className="bg-gradient-to-b from-yellow-50 to-amber-100/70 rounded-lg border-2 border-yellow-800/30 px-4 py-3">
-          <h2 className="text-base font-medium text-yellow-900 mb-3 text-center">求签流程</h2>
+          <h2 className="text-base font-medium text-yellow-900 mb-3 text-center">求签步骤</h2>
           <div className="space-y-2">
             <div className="flex items-start space-x-3">
               <span className="bg-yellow-100 text-yellow-900 w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">壹</span>
-              <p className="text-sm text-yellow-900/90 flex-1">点击"开始求签"按钮，虔诚祈愿</p>
+              <div className="text-sm text-yellow-900/90 flex-1">
+                <p>求签前先合手，默念「大仙大仙，指點迷津」並說出求签内容：</p>
+              </div>
             </div>
             <div className="flex items-start space-x-3">
               <span className="bg-yellow-100 text-yellow-900 w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">贰</span>
-              <p className="text-sm text-yellow-900/90 flex-1">可选择投掷圣杯，获得神明指示</p>
+              <div className="text-sm text-yellow-900/90 flex-1 space-y-1">
+                <p>需稟報以下資料：</p>
+                <ul className="list-disc list-inside pl-2 space-y-1">
+                  <li>中文全名</li>
+                  <li>信男（女）</li>
+                  <li>虛齡歲數</li>
+                  <li>稟報求問之事</li>
+                </ul>
+              </div>
             </div>
             <div className="flex items-start space-x-3">
               <span className="bg-yellow-100 text-yellow-900 w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">叁</span>
-              <p className="text-sm text-yellow-900/90 flex-1">解签后获得黄大仙师指引</p>
+              <p className="text-sm text-yellow-900/90 flex-1">虔誠祈願後，點擊「開始求签」按鈕</p>
             </div>
           </div>
         </div>

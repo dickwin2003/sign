@@ -55,7 +55,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 to="/about" 
                 className="text-yellow-50 hover:text-yellow-100 transition-colors duration-300 flex items-center text-sm"
               >
-                <i className="fas fa-temple w-4 text-yellow-200/90"></i>
+                <i className="fas fa-info-circle w-4 text-yellow-200/90"></i>
                 <span className="ml-1">關於本殿</span>
               </Link>
             </div>
@@ -88,7 +88,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 className="flex items-center py-1.5 text-yellow-50 hover:text-yellow-100 transition-colors duration-300 text-sm"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <i className="fas fa-temple w-5 text-yellow-200/90"></i>
+                <i className="fas fa-info-circle w-5 text-yellow-200/90"></i>
                 <span className="ml-1">關於本殿</span>
               </Link>
             </div>

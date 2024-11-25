@@ -33,6 +33,35 @@ export default function Index() {
             </button>
           </form>
 
+          {/* 求签步骤说明 */}
+          <div className="mt-12 mb-8 max-w-xl mx-auto bg-white/60 rounded-lg p-6 border border-yellow-900/10">
+            <h2 className="text-xl font-bold text-yellow-900 mb-4 flex items-center gap-2">
+              <i className="fas fa-list-ol text-yellow-800"></i>
+              求籤步驟
+            </h2>
+            <p className="text-yellow-900/90 mb-4">
+              求籤前先合手，默念「大仙大仙，指點迷津」並說出求籤內容：
+            </p>
+            <ul className="list-none space-y-3 text-yellow-900/80">
+              <li className="flex items-start gap-3">
+                <span className="bg-yellow-100 rounded-full w-6 h-6 flex items-center justify-center text-sm text-yellow-800 flex-shrink-0 mt-0.5">1</span>
+                <span>中文全名</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="bg-yellow-100 rounded-full w-6 h-6 flex items-center justify-center text-sm text-yellow-800 flex-shrink-0 mt-0.5">2</span>
+                <span>信男（女）</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="bg-yellow-100 rounded-full w-6 h-6 flex items-center justify-center text-sm text-yellow-800 flex-shrink-0 mt-0.5">3</span>
+                <span>虛齡歲數</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="bg-yellow-100 rounded-full w-6 h-6 flex items-center justify-center text-sm text-yellow-800 flex-shrink-0 mt-0.5">4</span>
+                <span>稟報求問之事</span>
+              </li>
+            </ul>
+          </div>
+
           {/* 功能介绍 */}
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
             <div className="bg-white/60 rounded-lg p-6 border border-yellow-900/10">

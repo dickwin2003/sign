@@ -1,6 +1,7 @@
 import { json, redirect, type LoaderFunctionArgs, type ActionFunctionArgs, type MetaFunction } from "@remix-run/cloudflare";
 import { Form, useLoaderData } from "@remix-run/react";
 import { createMetaTags } from "~/utils/meta";
+import { createDivinationServiceSchema } from "~/utils/schema";
 
 export const meta: MetaFunction = () => createMetaTags(
   "求签问事",
@@ -51,9 +52,13 @@ export async function action({ request }: ActionFunctionArgs) {
 
 export default function Draw() {
   const { signNumber } = useLoaderData<typeof loader>();
-
+  const divinationSchema = createDivinationServiceSchema();
+  
   return (
     <div className="min-h-[calc(100vh-6rem)] flex flex-col justify-between bg-amber-50/30 py-3">
+      <script type="application/ld+json">
+        {JSON.stringify(divinationSchema)}
+      </script>
       {/* 签号显示 */}
       <div className="text-center py-6">
         <div className="bg-gradient-to-b from-yellow-50 to-amber-100/70 rounded-lg border-2 border-yellow-800/30 px-4 py-6 mx-2 inline-block">

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- 背景圆 -->
+    <circle cx="256" cy="256" r="248" fill="#FEF3C7" stroke="#92400E" stroke-width="16"/>
+    
+    <!-- 卷轴外形 -->
+    <path d="M156 126C156 114.954 164.954 106 176 106H336C347.046 106 356 114.954 356 126V386C356 397.046 347.046 406 336 406H176C164.954 406 156 397.046 156 386V126Z" fill="#FFFBEB" stroke="#92400E" stroke-width="12"/>
+    
+    <!-- 卷轴装饰线 -->
+    <line x1="186" y1="166" x2="326" y2="166" stroke="#92400E" stroke-width="8" stroke-linecap="round"/>
+    <line x1="186" y1="216" x2="326" y2="216" stroke="#92400E" stroke-width="8" stroke-linecap="round"/>
+    <line x1="186" y1="266" x2="326" y2="266" stroke="#92400E" stroke-width="8" stroke-linecap="round"/>
+    <line x1="186" y1="316" x2="326" y2="316" stroke="#92400E" stroke-width="8" stroke-linecap="round"/>
+    
+    <!-- 签字 -->
+    <text x="256" y="366" text-anchor="middle" font-family="'Noto Serif SC'" font-size="48" fill="#92400E" font-weight="bold">灵签</text>
+</svg>
