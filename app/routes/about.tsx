@@ -7,7 +7,7 @@ export default function About() {
         <div className="max-w-screen-md mx-auto">
           <div className="bg-gradient-to-b from-yellow-50 to-amber-50 rounded-lg border-2 border-yellow-900/20 p-6">
             <h1 className="text-2xl font-bold text-yellow-900 mb-6 text-center font-serif flex items-center justify-center gap-2">
-              <span className="text-2xl">🏮</span>
+              <span className="text-2xl">⛩️</span>
               關於本殿
             </h1>
             <div className="prose prose-yellow max-w-none">

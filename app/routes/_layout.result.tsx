@@ -27,7 +27,7 @@ export default function Result() {
     <div className="min-h-[calc(100vh-6rem)] bg-amber-50/30 py-3 px-4">
       {/* 签文标题 */}
       <div className="text-center mb-6">
-        <div className="inline-block bg-gradient-to-b from-yellow-50 to-amber-100/70 rounded-lg border-2 border-yellow-800/30 px-6 py-4">
+        <div className="w-full bg-gradient-to-b from-yellow-50 to-amber-100/70 rounded-lg border-2 border-yellow-800/30 px-6 py-4">
           <div className="mb-2">
             <i className="fas fa-scroll text-yellow-800/90 text-2xl"></i>
           </div>
@@ -82,9 +82,30 @@ export default function Result() {
             仙機
           </h2>
           <div className="bg-white/60 rounded-lg p-4 border border-yellow-900/10">
-            <p className="text-yellow-900/90 text-sm whitespace-pre-line leading-relaxed">
-              {sign.xj}
-            </p>
+            <div className="text-yellow-900/90 text-sm leading-relaxed">
+              {(() => {
+                // 使用正则表达式匹配"两个汉字+冒号"的模式
+                const regex = /([\u4e00-\u9fa5]{2}[：:].*?)(?=[\u4e00-\u9fa5]{2}[：:]|$)/g;
+                const matches = [...sign.xj.matchAll(regex)];
+                
+                // 找到第一个匹配的位置
+                const firstMatch = sign.xj.match(/[\u4e00-\u9fa5]{2}[：:]/);
+                const firstPart = firstMatch 
+                  ? sign.xj.substring(0, firstMatch.index).trim()
+                  : '';
+                
+                return (
+                  <>
+                    {firstPart && <div className="mb-4">{firstPart}</div>}
+                    {matches.map((match, index) => (
+                      <div key={index} className="mb-2 last:mb-0">
+                        {match[0].trim()}
+                      </div>
+                    ))}
+                  </>
+                );
+              })()}
+            </div>
           </div>
         </div>
 

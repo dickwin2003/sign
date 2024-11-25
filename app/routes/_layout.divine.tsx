@@ -16,45 +16,39 @@ export async function loader({ request }: LoaderFunctionArgs) {
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
   const signNumber = formData.get("signNumber");
-  const cupResult = formData.get("cupResult");
-
-  // 如果是阴杯，返回首页重新求签
-  if (cupResult === "yin") {
-    return redirect("/");
+  const intent = formData.get("intent");
+  
+  // 如果是投掷圣杯的请求
+  if (intent === "throw") {
+    // 随机决定结果：30% 概率得到圣杯（阳杯）
+    const cupResult = Math.random() < 0.3 ? "yang" : "yin";
+    
+    // 如果是阴杯，返回首页重新求签
+    if (cupResult === "yin") {
+      return redirect("/");
+    }
+    
+    // 如果是圣杯（阳杯），进入解签页面
+    return redirect(`/result?signNumber=${signNumber}`);
   }
-
-  // 如果是圣杯（阳杯），进入解签页面
-  return redirect(`/result?signNumber=${signNumber}`);
+  
+  // 其他情况返回首页
+  return redirect("/");
 }
 
 export default function Divine() {
   const { signNumber } = useLoaderData<typeof loader>();
   const [isShaking, setIsShaking] = useState(false);
-  const [showResult, setShowResult] = useState(false);
-  const [cupResult, setCupResult] = useState<"yang" | "yin" | null>(null);
 
   // 投掷圣杯的动画效果
-  const throwCups = () => {
-    setIsShaking(true);
-    setShowResult(false);
-    
-    // 随机决定结果：30% 概率得到圣杯（阳杯）
-    const result = Math.random() < 0.3 ? "yang" : "yin";
-    
-    // 1秒后显示结果
-    setTimeout(() => {
-      setIsShaking(false);
-      setCupResult(result);
-      setShowResult(true);
-    }, 1000);
-  };
-
-  // 重置状态
   useEffect(() => {
-    setIsShaking(false);
-    setShowResult(false);
-    setCupResult(null);
-  }, []);
+    if (isShaking) {
+      const timer = setTimeout(() => {
+        setIsShaking(false);
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [isShaking]);
 
   return (
     <div className="min-h-[calc(100vh-6rem)] flex flex-col justify-between bg-amber-50/30 py-3">
@@ -80,50 +74,22 @@ export default function Divine() {
             </div>
           </div>
         </div>
-
-        {/* 结果显示 */}
-        {showResult && (
-          <div className="mt-6 text-center">
-            <div className={`text-lg font-bold ${cupResult === 'yang' ? 'text-yellow-700' : 'text-yellow-900/70'}`}>
-              {cupResult === 'yang' ? '圣杯（阳杯）' : '阴杯'}
-            </div>
-            <p className="mt-2 text-sm text-yellow-900/80">
-              {cupResult === 'yang' 
-                ? '恭喜，得到圣杯！神明已然应允，可以解签。' 
-                : '未得圣杯，需重新求签。'}
-            </p>
-          </div>
-        )}
       </div>
 
       {/* 按钮区域 */}
       <div className="px-4 space-y-4">
-        {!showResult ? (
+        <Form method="post" onSubmit={() => setIsShaking(true)}>
+          <input type="hidden" name="signNumber" value={signNumber} />
+          <input type="hidden" name="intent" value="throw" />
           <button
-            onClick={throwCups}
+            type="submit"
             disabled={isShaking}
             className="w-full py-3 px-4 text-yellow-50 text-base font-medium bg-gradient-to-r from-yellow-800 to-yellow-700 rounded-lg shadow-md transition-all duration-300 hover:from-yellow-700 hover:to-yellow-600 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-yellow-700 focus:ring-offset-2 focus:ring-offset-yellow-50 disabled:opacity-50"
           >
             <i className="fas fa-hands-praying mr-2"></i>
             {isShaking ? '诚心祈祷...' : '投掷圣杯'}
           </button>
-        ) : (
-          <Form method="post" className="space-y-4">
-            <input type="hidden" name="signNumber" value={signNumber} />
-            <input type="hidden" name="cupResult" value={cupResult || ''} />
-            <button
-              type="submit"
-              className={`w-full py-3 px-4 text-base font-medium rounded-lg shadow-md transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-700 focus:ring-offset-2 focus:ring-offset-yellow-50
-                ${cupResult === 'yang'
-                  ? 'text-yellow-50 bg-gradient-to-r from-yellow-800 to-yellow-700 hover:from-yellow-700 hover:to-yellow-600'
-                  : 'text-yellow-900 bg-gradient-to-r from-amber-200 to-yellow-200 hover:from-amber-300 hover:to-yellow-300 border border-yellow-900/20'
-                }`}
-            >
-              <i className={`mr-2 fas ${cupResult === 'yang' ? 'fa-book-open' : 'fa-redo'}`}></i>
-              {cupResult === 'yang' ? '查看解签' : '重新求签'}
-            </button>
-          </Form>
-        )}
+        </Form>
       </div>
 
       {/* 说明文字 */}
