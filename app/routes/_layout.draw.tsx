@@ -48,6 +48,11 @@ export async function action({ request }: ActionFunctionArgs) {
   if (intent === "divine") {
     const result = throwHolyCup();
     const divineResult = encodeURIComponent(JSON.stringify(result));
+    if (!result.isHoly) {
+      // 如果是阴杯，生成新的签号
+      const newSignNumber = Math.floor(Math.random() * 100) + 1;
+      return redirect(`/draw?signNumber=${newSignNumber}&divineResult=${divineResult}`);
+    }
     return redirect(`/draw?signNumber=${signNumber}&divineResult=${divineResult}`);
   }
   
@@ -60,9 +65,10 @@ export async function action({ request }: ActionFunctionArgs) {
         return redirect(`/result?signNumber=${signNumber}`);
       }
     }
-    // 如果没有投圣杯或得到阴杯，保持在当前页面
+    // 如果没有投圣杯或得到阴杯，重新求签
+    const newSignNumber = Math.floor(Math.random() * 100) + 1;
     const divineResult = encodeURIComponent(JSON.stringify({ isHoly: false, message: "请先投掷圣杯并获得圣杯指引" }));
-    return redirect(`/draw?signNumber=${signNumber}&divineResult=${divineResult}`);
+    return redirect(`/draw?signNumber=${newSignNumber}&divineResult=${divineResult}`);
   }
   
   // 如果没有有效的 intent，返回到首页
